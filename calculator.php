@@ -2,27 +2,29 @@
 
 if(isset($_POST['submit'])){
 
-    $drop=$_POST['drop'];
+    $op=$_POST['op'];
     $num1=$_POST['num1'];
     $num2=$_POST['num2'];
     
-    switch($drop){
+    switch($op){
 
         case "add":
             $num3=$num1+$num2;
             break;
         case "sub":
-            $num3=$num1-$num2;
+            $num3 = $num1-$num2;
             break;  
         case "mul":
             $num3=$num1*$num2;
             break;
         case "div":
-            $num3=$num1/$num2;
+            $num3 = $num1 / $num2;
+            break;
         case "mod":
-            $num3=$num1%$num2;
+            $num3 = $num1 % $num2;
+            break;
         case "exp":
-            $num3=$num1**$num2;
+            $num3 = $num1 ** $num2;
             break;
         default:
             $num3="Please select operation ";
@@ -50,11 +52,14 @@ if(isset($_POST['submit'])){
     font-family: 'Montserrat', sans-serif;
     
 }
+body{
+    background-color:#000;
+}
 
 .cal{
     width:600px;
     height:600px;
-    background: linear-gradient(#4839B0,#E50A86);
+    background: linear-gradient(#0093E9,#80D0C7);
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
     position: absolute;
     left: 50%;
@@ -98,7 +103,7 @@ input:hover{
 
 }
 input[type="submit"]{
-    background-color:#4839B0;
+    background-color:#80D0C7;
     width:200px;
     height:40px;
     color: white;
@@ -108,7 +113,7 @@ input[type="submit"]{
 
 }
 input[type="submit"]:active{
-    background-color:#4839B0;
+    background-color:#80D0C7;
     width:180px;
     height:40px;
     color: white;
@@ -146,10 +151,10 @@ select{
     <h3 class="header">CALCULATOR</h3>
     <form action="calculator.php" method="POST">
 
-        <input type="text" name="num1" placeholder="Enter first Number" value="<?php echo @$num1?>" required>
-        <input type="text" name="num2" placeholder="Enter Second Number"  value="<?php echo @$num2?>" required>
+        <input type="number" name="num1" placeholder="Enter first Number" value="<?php echo @$num1?>" required>
+        <input type="number" name="num2" placeholder="Enter Second Number"  value="<?php echo @$num2?>" required>
 
-        <select name="drop">
+        <select name="op">
             <option>Please select</option>
             <option value="add">ADD '+'</option>
             <option value="sub">SUB '-'</option>
@@ -162,7 +167,7 @@ select{
         <input type="submit" name="submit">
 
         <h5 class="result" >
-            YOUR ANSWER:  <br> <br>
+            YOUR ANSWER :  <br> <br>
             <span class="value-result">
                 <?php echo @$num3?>
             </span>
