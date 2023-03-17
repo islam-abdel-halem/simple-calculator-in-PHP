@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
             $num3 = $num1 ** $num2;
             break;
         default:
-            $num3="Please select operation ";
+            $num3="Select operation ";
     }
 }
 ?>
@@ -57,10 +57,10 @@ body{
 }
 
 .cal{
-    width:600px;
-    height:600px;
     background: linear-gradient(#0093E9,#80D0C7);
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+    width:500px;
+    height:500px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -68,7 +68,8 @@ body{
     text-align: center;
     box-shadow: 20px 6px 0px 0px rgb(128 128 128 / 26%);
 }
-.header{
+.title{
+    
     text-align:center;
     margin-top:50px;
     color:white;
@@ -78,13 +79,13 @@ body{
 form{
     position: absolute;
     left: 50%;
-    top: 45%;
+    top: 50%;
     transform: translate(-50%,-50%);
 
 }
 
 input{
-    width:300px;
+    width:200px;
     height:40px;
     margin-top: 20px;
     border-radius: 40px;
@@ -97,14 +98,9 @@ input{
 
 }
 
-input:hover{
-    width:260px;
-    transition: 0.3s;
-
-}
 input[type="submit"]{
     background-color:#80D0C7;
-    width:200px;
+    width:150px;
     height:40px;
     color: white;
     font-size: 20px;
@@ -112,18 +108,12 @@ input[type="submit"]{
 
 
 }
-input[type="submit"]:active{
-    background-color:#80D0C7;
-    width:180px;
-    height:40px;
-    color: white;
-    font-size: 20px;
-    border: none;
-
-
+input[type="submit"]:active,
+input[type="submit"]:hover{
+    background-color:#0093E9;
 }
 select{
-    width:280px;
+    width:200px;
     height:40px;
     margin-top: 20px;
     border-radius: 40px;
@@ -137,9 +127,9 @@ select{
     margin-top:30px;
     font-size:18px;
 }
-.value-result{
+.value{
     color:white;
-    font: size 23px;
+    font-size: 23px;
 }
         
     </style>
@@ -148,7 +138,7 @@ select{
 <body>
 
 <div class="cal">
-    <h3 class="header">CALCULATOR</h3>
+    <h3 class="title">CALCULATOR</h3>
     <form action="calculator.php" method="POST">
 
         <input type="number" name="num1" placeholder="Enter first Number" value="<?php echo @$num1?>" required>
@@ -163,15 +153,8 @@ select{
             <option value="mod">mod '%'</option>
             <option value="exp">exp '**'</option>
         </select> <br>
-
         <input type="submit" name="submit">
-
-        <h5 class="result" >
-            YOUR ANSWER :  <br> <br>
-            <span class="value-result">
-                <?php echo @$num3?>
-            </span>
-        </h5>
+        <h5 class="result">YOUR ANSWER : <span class="value"><?php echo @$num3?></span></h5>
     </form>
     
 </div>
